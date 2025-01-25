@@ -1,106 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
-   <meta charset="UTF-8">
-   <title>CIESPAL 2024</title>
-   <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
-   <style>
-       body { background: white; padding: 20px; }
-       .node {
-           opacity: 0;
-           animation: fadeIn 0.5s ease-in forwards;
-       }
-       .node:nth-child(1) { animation-delay: 0.1s; }
-       .node:nth-child(2) { animation-delay: 0.2s; }
-       .node:nth-child(3) { animation-delay: 0.3s; }
-       .node:nth-child(4) { animation-delay: 0.4s; }
-       
-       @keyframes fadeIn {
-           from { 
-               opacity: 0;
-               transform: translateY(20px);
-           }
-           to { 
-               opacity: 1;
-               transform: translateY(0);
-           }
-       }
-       
-       .edgePath {
-           opacity: 0;
-           animation: fadeIn 0.5s ease-in forwards;
-           animation-delay: 0.5s;
-       }
-   </style>
+    <meta charset="UTF-8">
+    <title>CIESPAL 2024</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
 </head>
 <body>
-   <pre class="mermaid">
-   flowchart LR
-       CIESPAL[CIESPAL 2024]
-       
-       %% Gestión Financiera
-       CIESPAL --> GF[Gestión Financiera]
-       GF --> Ingresos
-       Ingresos --> SEN[SENESCYT $330,632]
-       Ingresos --> AUT[Autogestión $169,852]
-       Ingresos --> EVE[Eventos $38,908]
-       GF --> Proyectos
-       Proyectos --> EJE[6 Ejecutados $281,800]
-       Proyectos --> NEG[6 Negociación $612,880]
-       
-       %% Proyectos Estratégicos
-       CIESPAL --> PE[Proyectos Estratégicos]
-       PE --> OR[Onda Rural]
-       OR --> PR[52 programas radio]
-       OR --> RA[800 radios aliadas]
-       PE --> R24[RETO 24]
-       R24 --> CEL[19 celumetrajes]
-       R24 --> PAR[120 participantes]
-       PE --> BEA[BEA]
-       BEA --> EST[150 estudiantes]
-       PE --> CR[Creadoras]
-       CR --> EMP[90 emprendedoras]
-       
-       %% Académica
-       CIESPAL --> PA[Producción Académica]
-       PA --> CAT[Cátedras]
-       CAT --> UNE[UNESCO]
-       CAT --> KAP[Kaplún]
-       CAT --> MAT[Mattelart]
-       PA --> PUB[Publicaciones]
-       PUB --> LIB[13 libros]
-       PUB --> REV[3 Chasqui]
-       
-       %% Comunicación
-       CIESPAL --> COM[Comunicación]
-       COM --> DIG[Digital]
-       DIG --> WEB[225 publicaciones]
-       COM --> RED[Redes]
-       RED --> FB[FB: 679k]
-       RED --> TW[TW: 267k]
-       
-       %% Estilos
-       classDef default fill:#fff,stroke:#333,stroke-width:1px;
-       classDef gf fill:#ffd700,stroke:#333;
-       classDef pe fill:#90EE90,stroke:#333;
-       classDef pa fill:#87CEEB,stroke:#333;
-       classDef com fill:#DDA0DD,stroke:#333;
-       
-       class GF,Ingresos,SEN,AUT,EVE,Proyectos,EJE,NEG gf;
-       class PE,OR,PR,RA,R24,CEL,PAR,BEA,EST,CR,EMP pe;
-       class PA,CAT,UNE,KAP,MAT,PUB,LIB,REV pa;
-       class COM,DIG,WEB,RED,FB,TW com;
-   </pre>
-   <script>
-       mermaid.initialize({
-           startOnLoad: true,
-           theme: 'default',
-           flowchart: {
-               curve: 'basis',
-               nodeSpacing: 50,
-               rankSpacing: 50
-           }
-       });
-   </script>
+    <pre class="mermaid">
+    mindmap
+      root((CIESPAL 2024))
+        ("Gestión Financiera")
+          ("SENESCYT $330,632")
+          ("Autogestión $169,852")
+          ("Eventos $38,908")
+        ("Proyectos Estratégicos")
+          ("Onda Rural")
+            ("52 programas radio")
+            ("800 radios aliadas")
+          ("RETO 24")
+            ("19 celumetrajes")
+          ("BEA")
+            ("150 estudiantes")
+        ("Producción Académica")
+          ("Cátedras")
+            ("UNESCO")
+            ("Kaplún")
+            ("Mattelart")
+          ("13 libros")
+        ("Comunicación")
+          ("Digital")
+            ("225 publicaciones")
+          ("Redes")
+            ("FB 679k")
+            ("TW 267k")
+    </pre>
+    <script>
+        mermaid.initialize({startOnLoad: true});
+    </script>
 </body>
 </html>
