@@ -1,41 +1,53 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
     <title>CIESPAL 2024</title>
-    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <style>
+        body { padding: 20px; }
+        #chart { width: 100%; }
+    </style>
 </head>
 <body>
-    <pre class="mermaid">
+    <pre class="mermaid" id="chart">
     mindmap
-      root((CIESPAL 2024))
-        ("Gestión Financiera")
-          ("SENESCYT $330,632")
-          ("Autogestión $169,852")
-          ("Eventos $38,908")
-        ("Proyectos Estratégicos")
-          ("Onda Rural")
-            ("52 programas radio")
-            ("800 radios aliadas")
-          ("RETO 24")
-            ("19 celumetrajes")
-          ("BEA")
-            ("150 estudiantes")
-        ("Producción Académica")
-          ("Cátedras")
-            ("UNESCO")
-            ("Kaplún")
-            ("Mattelart")
-          ("13 libros")
-        ("Comunicación")
-          ("Digital")
-            ("225 publicaciones")
-          ("Redes")
-            ("FB 679k")
-            ("TW 267k")
+        root((CIESPAL 2024))
+            (Proyectos Estratégicos)
+                (Onda Rural)
+                    [52 programas radio]
+                    [800 radios aliadas]
+                    [20 módulos informativos]
+                (RETO 24)
+                    [19 celumetrajes]
+                    [120 participantes]
+                    [4 categorías]
+                (BEA)
+                    [150 estudiantes]
+                    [5 países]
+                (Creadoras)
+                    [90 emprendedoras]
+                    [45 productos]
+                (Educomunicadores)
+                    [228 participantes]
+                    [96 talleres]
+            (Producción Académica)
+                (Cátedras)
+                    [UNESCO]
+                    [Kaplún]
+                    [Mattelart]
+                (Publicaciones)
+                    [13 libros]
+                    [3 Chasqui]
+            (Comunicación)
+                (Digital)
+                    [225 publicaciones]
+                    [98k visitas]
+                (Redes)
+                    [FB: 679k]
+                    [TW: 267k]
     </pre>
     <script>
-        mermaid.initialize({startOnLoad: true});
+        mermaid.initialize({ startOnLoad: true });
     </script>
 </body>
 </html>
