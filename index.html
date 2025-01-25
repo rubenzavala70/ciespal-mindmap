@@ -5,67 +5,74 @@
     <title>CIESPAL 2024</title>
     <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
     <style>
-        body { padding: 20px; }
-        #mermaid { width: 100%; height: 100vh; }
+        body { background: white; padding: 20px; }
     </style>
 </head>
 <body>
-    <div class="mermaid">
-    graph LR
-        CIESPAL["CIESPAL 2024"]
-        
-        %% Gestión Financiera
-        CIESPAL --> GF["Gestión Financiera"]
-        GF --> ING["Ingresos"]
-        ING --> SEN["SENESCYT: $330,632"]
-        ING --> AUT["Autogestión: $169,852"]
-        ING --> EVE["Eventos: $38,908"]
-        
-        %% Proyectos
-        CIESPAL --> PE["Proyectos Estratégicos"]
-        PE --> OR["Onda Rural"]
-        OR --> PR["52 programas radio"]
-        OR --> RA["800 radios aliadas"]
-        PE --> R24["RETO 24"]
-        R24 --> CEL["19 celumetrajes"]
-        R24 --> PAR["120 participantes"]
-        
-        %% Académico
-        CIESPAL --> PA["Producción Académica"]
-        PA --> CAT["Cátedras"]
-        CAT --> UNE["UNESCO"]
-        CAT --> KAP["Kaplún"]
-        CAT --> MAT["Mattelart"]
-        
-        %% Comunicación
-        CIESPAL --> COM["Comunicación"]
-        COM --> DIG["Digital"]
-        DIG --> PUB["225 publicaciones"]
-        COM --> RED["Redes"]
-        RED --> FB["FB: 679k alcance"]
-        RED --> TW["TW: 267k"]
+    <pre class="mermaid">
+    mindmap
+        root((CIESPAL 2024))
+            (Gestión Financiera):::finanzas
+                (Ingresos)
+                    [SENESCYT $330,632]
+                    [Autogestión $169,852]
+                    [Eventos $38,908]
+                (Proyectos)
+                    [6 Ejecutados $281,800]
+                    [6 Negociación $612,880]
+            (Proyectos Estratégicos):::proyectos
+                (Onda Rural)
+                    [52 programas radio revista]
+                    [800 radios aliadas]
+                    [20 módulos info]
+                (RETO 24)
+                    [19 celumetrajes]
+                    [120 participantes]
+                (BEA)
+                    [150 estudiantes]
+                    [5 países participantes]
+                    [Paneles IA]
+                (Creadoras)
+                    [90 emprendedoras]
+                    [45 productos plataforma]
+                (Educomunicadores)
+                    [228 participantes]
+                    [96 talleres]
+                    [12 barrios]
+            (Producción Académica):::academica
+                (Cátedras)
+                    (UNESCO)
+                        [Renovación 4 años]
+                        [Serie Interculturalidad]
+                    (Kaplún)
+                        [6 sesiones]
+                        [Fact-checking]
+                        [Libro Hoy es mañana]
+                    (Mattelart)
+                        [5 conversatorios]
+                        [Transmetodología]
+                (Publicaciones)
+                    [13 libros]
+                    [3 Chasqui]
+            (Comunicación):::comunicacion
+                (Digital)
+                    [225 publicaciones]
+                    [127 producciones]
+                    [98k visitas]
+                (Redes)
+                    [FB: 679k alcance]
+                    [TW: 267k impresiones]
+                    [IG: 35k alcance]
 
-        classDef default fill:#fff,stroke:#333,stroke-width:2px;
-        classDef principal fill:#4299e1,color:white;
-        classDef finanzas fill:#ffd700;
-        classDef proyectos fill:#90EE90;
-        classDef academica fill:#87CEEB;
-        classDef comunicacion fill:#DDA0DD;
-
-        class CIESPAL principal;
-        class GF,ING,SEN,AUT,EVE finanzas;
-        class PE,OR,R24,PR,RA,CEL,PAR proyectos;
-        class PA,CAT,UNE,KAP,MAT academica;
-        class COM,DIG,RED,PUB,FB,TW comunicacion;
-    </div>
+    classDef finanzas fill:#ffd700
+    classDef proyectos fill:#90EE90
+    classDef academica fill:#87CEEB
+    classDef comunicacion fill:#DDA0DD
+    </pre>
     <script>
         mermaid.initialize({ 
             startOnLoad: true,
-            theme: 'default',
-            flowchart: {
-                curve: 'basis',
-                padding: 100
-            }
+            theme: 'default'
         });
     </script>
 </body>
