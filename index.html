@@ -1,221 +1,53 @@
 <!DOCTYPE html>
 <html>
 <head>
-   <meta charset="UTF-8">
-   <title>CIESPAL 2024 - Mapa Mental</title>
-   <style>
-       body { margin: 0; overflow: hidden; background: white; }
-       #mindmap { width: 100vw; height: 100vh; }
-       .node { transition: opacity 0.5s ease-in-out; }
-       .node circle { transition: r 0.3s ease-in-out; }
-       .node:hover circle { r: 15; }
-       .link { transition: stroke-width 0.3s ease-in-out; }
-       .link:hover { stroke-width: 3; }
-       .node text {
-           fill: #333;
-           font-size: 14px;
-           font-weight: 500;
-       }
-       .link {
-           fill: none;
-           stroke: #555;
-       }
-       svg {
-           background: white;
-       }
-   </style>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+    <title>CIESPAL 2024</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <style>
+        body { padding: 20px; }
+        #chart { width: 100%; }
+    </style>
 </head>
 <body>
-   <div id="mindmap"></div>
-   <script>
-       const data = {
-           name: "CIESPAL 2024",
-           children: [
-               {
-                   name: "Proyectos Estratégicos",
-                   children: [
-                       {
-                           name: "Onda Rural",
-                           children: [
-                               {name: "52 programas radio revista"},
-                               {name: "Red 800 radios aliadas"},
-                               {name: "20 módulos informativos"},
-                               {name: "8 horas Foro Global"}
-                           ]
-                       },
-                       {
-                           name: "RETO 24",
-                           children: [
-                               {name: "19 celumetrajes"},
-                               {name: "120 mujeres participantes"},
-                               {name: "4 categorías premiadas"},
-                               {name: "3 días de actividades"}
-                           ]
-                       },
-                       {
-                           name: "BEA",
-                           children: [
-                               {name: "150 estudiantes"},
-                               {name: "5 países participantes"},
-                               {name: "Paneles IA y producción"}
-                           ]
-                       },
-                       {
-                           name: "Creadoras",
-                           children: [
-                               {name: "90 emprendedoras"},
-                               {name: "45 productos"},
-                               {name: "2 ferias"}
-                           ]
-                       },
-                       {
-                           name: "Educomunicadores",
-                           children: [
-                               {name: "228 participantes"},
-                               {name: "96 talleres"},
-                               {name: "12 barrios"}
-                           ]
-                       }
-                   ]
-               },
-               {
-                   name: "Producción Académica",
-                   children: [
-                       {
-                           name: "Cátedras",
-                           children: [
-                               {
-                                   name: "UNESCO",
-                                   children: [
-                                       {name: "Renovación 4 años"},
-                                       {name: "Serie Interculturalidad"},
-                                       {name: "3 jornadas académicas"}
-                                   ]
-                               },
-                               {
-                                   name: "Kaplún",
-                                   children: [
-                                       {name: "6 sesiones"},
-                                       {name: "Curso Fact-checking"},
-                                       {name: "Libro Hoy es mañana"}
-                                   ]
-                               },
-                               {
-                                   name: "Mattelart",
-                                   children: [
-                                       {name: "5 conversatorios"},
-                                       {name: "Serie Comunicación"},
-                                       {name: "Transmetodología"}
-                                   ]
-                               }
-                           ]
-                       },
-                       {
-                           name: "Publicaciones",
-                           children: [
-                               {name: "13 libros"},
-                               {name: "3 revistas Chasqui"}
-                           ]
-                       }
-                   ]
-               },
-               {
-                   name: "Comunicación",
-                   children: [
-                       {
-                           name: "Digital",
-                           children: [
-                               {name: "225 publicaciones"},
-                               {name: "127 producciones"},
-                               {name: "98,841 visitas"}
-                           ]
-                       },
-                       {
-                           name: "Redes",
-                           children: [
-                               {name: "FB: 679k alcance"},
-                               {name: "TW: 267k impresiones"},
-                               {name: "IG: 35k alcance"}
-                           ]
-                       }
-                   ]
-               }
-           ]
-       };
-
-       const width = 1600;
-       const height = 1000;
-       const margin = {top: 50, right: 200, bottom: 50, left: 200};
-
-       const svg = d3.select("#mindmap")
-           .append("svg")
-           .attr("width", width)
-           .attr("height", height)
-           .append("g")
-           .attr("transform", `translate(${margin.left},${margin.top})`);
-
-       const tree = d3.tree()
-           .size([height - 100, width - 400]);
-
-       const root = d3.hierarchy(data);
-       tree(root);
-
-       const link = svg.selectAll(".link")
-           .data(root.links())
-           .enter().append("path")
-           .attr("class", "link")
-           .style("fill", "none")
-           .style("stroke", "#555")
-           .style("stroke-width", 2)
-           .style("opacity", 0)
-           .attr("d", d3.linkHorizontal()
-               .x(d => d.y)
-               .y(d => d.x))
-           .transition()
-           .duration(1000)
-           .delay((d, i) => i * 100)
-           .style("opacity", 1);
-
-       const node = svg.selectAll(".node")
-           .data(root.descendants())
-           .enter().append("g")
-           .attr("class", "node")
-           .attr("transform", d => `translate(${d.y},${d.x})`)
-           .style("opacity", 0)
-           .transition()
-           .duration(1000)
-           .delay((d, i) => i * 100)
-           .style("opacity", 1);
-
-       svg.selectAll(".node")
-           .data(root.descendants())
-           .enter()
-           .append("circle")
-           .attr("r", 10)
-           .style("fill", d => d.depth === 0 ? "#4299e1" : 
-                             d.depth === 1 ? "#48bb78" : 
-                             d.depth === 2 ? "#ed8936" : "#9f7aea")
-           .attr("transform", d => `translate(${d.y},${d.x})`);
-
-       svg.selectAll(".node-text")
-           .data(root.descendants())
-           .enter()
-           .append("text")
-           .attr("class", "node-text")
-           .attr("transform", d => `translate(${d.y},${d.x})`)
-           .attr("dy", "0.31em")
-           .attr("x", d => d.children ? -12 : 12)
-           .style("text-anchor", d => d.children ? "end" : "start")
-           .text(d => d.data.name);
-
-       const zoom = d3.zoom()
-           .scaleExtent([0.5, 2])
-           .on("zoom", (event) => {
-               svg.attr("transform", event.transform);
-           });
-
-       d3.select("svg").call(zoom);
-   </script>
+    <pre class="mermaid" id="chart">
+    mindmap
+        root((CIESPAL 2024))
+            (Proyectos Estratégicos)
+                (Onda Rural)
+                    [52 programas radio]
+                    [800 radios aliadas]
+                    [20 módulos informativos]
+                (RETO 24)
+                    [19 celumetrajes]
+                    [120 participantes]
+                    [4 categorías]
+                (BEA)
+                    [150 estudiantes]
+                    [5 países]
+                (Creadoras)
+                    [90 emprendedoras]
+                    [45 productos]
+                (Educomunicadores)
+                    [228 participantes]
+                    [96 talleres]
+            (Producción Académica)
+                (Cátedras)
+                    [UNESCO]
+                    [Kaplún]
+                    [Mattelart]
+                (Publicaciones)
+                    [13 libros]
+                    [3 Chasqui]
+            (Comunicación)
+                (Digital)
+                    [225 publicaciones]
+                    [98k visitas]
+                (Redes)
+                    [FB: 679k]
+                    [TW: 267k]
+    </pre>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
 </body>
 </html>
